@@ -9,10 +9,9 @@ import java.sql.Date;
 import java.util.List;
 
 @Repository
-
 public interface SessionCoursRepository extends JpaRepository<SessionCours,Integer> {
 
-    public List<SessionCours> findByDateDLikeAndDateFLikeAndNbrILike(Date dateDebut, Date dateFin, int nbreinscrits);
+    public List<SessionCours> findByDateDebutLikeAndDateFinLikeAndNbrILike(Date dateDebut, Date dateFin, int nbreinscrits);
 
 
 }

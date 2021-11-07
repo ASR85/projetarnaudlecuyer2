@@ -34,7 +34,7 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
     }
 
     public SessionCours read(Date dateDebut, Date dateFin, int nbreinscrits) {
-        return sessionCoursRepository.findByDateDLikeAndDateFLikeAndNbrILike(dateDebut, dateFin, nbreinscrits).stream().findFirst().get();
+        return sessionCoursRepository.findByDateDebutLikeAndDateFinLikeAndNbrILike(dateDebut, dateFin, nbreinscrits).stream().findFirst().get();
     }
 
 
