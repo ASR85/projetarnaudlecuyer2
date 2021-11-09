@@ -23,8 +23,7 @@ public class SessionCours {
     private Date dateDebut;
     private Date dateFin;
     private Integer nbreinscrits;
-    private Integer fk_idformateur;
 
-    @ManyToOne @JoinColumn(name="id")
+    @ManyToOne @JoinColumn(name="fk_idformateur")
     private Formateur formateur;
 }

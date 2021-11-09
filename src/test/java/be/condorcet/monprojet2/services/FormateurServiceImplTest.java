@@ -20,7 +20,7 @@ class FormateurServiceImplTest {
     @BeforeEach
     void setUp() {
         try{
-            fo = new Formateur(1,"arnaud.lecuyer@ondorcet.be", "NomTest","PrenomTest",null, null);
+            fo = new Formateur(null, "a.lecuyer@ondorcet.be", "NomTest","PrenomTest",null);
             formateurServiceImpl.create(fo);
             System.out.println("Création du formateur: "+fo);
         }

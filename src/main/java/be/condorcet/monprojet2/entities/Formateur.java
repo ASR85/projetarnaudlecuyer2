@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Data @NoArgsConstructor @AllArgsConstructor @ToString
 @Entity
@@ -20,9 +21,8 @@ public class Formateur {
     private String mail;
     private String nom;
     private String prenom;
-    private Integer fk_idsessioncours;
 
-    @ManyToOne @JoinColumn(name="id")
-    private SessionCours sessionCours;
+    @OneToMany @JoinColumn(name="formateur")
+    private Collection<SessionCours> sessionCours;
 
 }
