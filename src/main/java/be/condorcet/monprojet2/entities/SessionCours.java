@@ -14,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "sessioncours", schema = "public", catalog = "d6m1q13bi9o7ol")
+@Table(name="sessioncours",schema="public",catalog="d6m1q13bi9o7ol")
 
 public class SessionCours {
 
@@ -23,7 +23,7 @@ public class SessionCours {
     private Date dateDebut;
     private Date dateFin;
     private Integer nbreinscrits;
-
-    @ManyToOne @JoinColumn(name="fk_idformateur")
+    @ManyToOne
+    @JoinColumn(name="fk_idformateur")
     private Formateur formateur;
 }

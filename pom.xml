@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>be.condorcet</groupId>
-    <artifactId>monprojet2</artifactId>
+    <artifactId>monprojetweb1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>monprojet2</name>
-    <description>monprojet2</description>
+    <name>monprojetweb1</name>
+    <description>monprojetweb1</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -51,6 +51,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -66,8 +70,27 @@
                         </exclude>
                     </excludes>
                 </configuration>
-
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <useFile>true</useFile>
+                    <includes>
+                        <include>**/*Tests.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/Abstract*.java</exclude>
+                    </excludes>
+                    <junitArtifactName>junit:junit</junitArtifactName>
+                    <parallel>methods</parallel>
+                    <threadCount>10</threadCount>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
