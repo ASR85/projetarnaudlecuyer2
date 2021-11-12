@@ -1,6 +1,7 @@
 package be.condorcet.monprojet2.services;
 
 import be.condorcet.monprojet2.entities.Formateur;
+import be.condorcet.monprojet2.entities.SessionCours;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +15,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class FormateurServiceImplTest {
 
     @Autowired
-    private InterfFormateurService formateurServiceImpl;
+    private FormateurServiceImpl formateurServiceImpl;
+
+    @Autowired
+            private SessionCoursServiceImpl sessionCoursServiceImpl;
 
     Formateur fo;
 
@@ -51,7 +55,7 @@ class FormateurServiceImplTest {
 
     @Test
     void read() {
-/*
+
         try{
             int numfo=fo.getId();
             Formateur fo2=formateurServiceImpl.read(numfo);
@@ -61,7 +65,7 @@ class FormateurServiceImplTest {
         }
         catch (Exception e){
             fail("Recherche Infructueuse "+e);
-        }*/
+        }
     }
 /*
     @Test
@@ -70,7 +74,7 @@ class FormateurServiceImplTest {
 
     @Test
     void update() {
-/*
+
         try{
             fo.setNom("NomTest2");
             fo.setPrenom("PrenomTest2");
@@ -82,13 +86,13 @@ class FormateurServiceImplTest {
         }
         catch(Exception e){
             fail("Erreur de mise à jour!"+e);
-        }*/
+        }
 
     }
 
     @Test
     void delete() {
-/*
+
         try{
             formateurServiceImpl.delete(fo);
             Assertions.assertThrows(Exception.class, () -> {
@@ -97,7 +101,7 @@ class FormateurServiceImplTest {
         }
         catch(Exception e){
             fail("Erreur d'effacement "+e);
-        }*/
+        }
     }
 
 }

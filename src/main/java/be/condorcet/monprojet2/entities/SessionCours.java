@@ -18,7 +18,8 @@ import java.util.Date;
 
 public class SessionCours {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date dateDebut;
     private Date dateFin;

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-//@Service
+@Service
 @Transactional(rollbackOn = Exception.class)
 public class FormateurServiceImpl implements InterfFormateurService{
 
@@ -35,7 +35,7 @@ public class FormateurServiceImpl implements InterfFormateurService{
     }
 
     @Override
-    public List<Formateur> read(String nom) {
+    public List<Formateur>read(String nom) {
         return formateurRepository.findByNomLike(nom);
     }
 
@@ -56,6 +56,7 @@ public class FormateurServiceImpl implements InterfFormateurService{
         formateurRepository.save(oldCl);
         return read(oldCl.getId());
     }
+
     @Override
     public void delete(Formateur formateur) throws Exception {
         formateurRepository.deleteById(formateur.getId());

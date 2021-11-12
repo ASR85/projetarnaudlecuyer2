@@ -8,13 +8,17 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.Collection;
 
-@Data @NoArgsConstructor @AllArgsConstructor @ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Entity
 @Table(name="formateur",schema="public",catalog="d6m1q13bi9o7ol")
 
 public class Formateur{
 
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String mail;
     private String nom;
