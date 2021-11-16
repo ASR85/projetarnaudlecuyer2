@@ -1,4 +1,4 @@
-package be.condorcet.monprojet2.entities;
+package be.condorcet.projetarnaudlecuyer2.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import javax.xml.soap.Name;
 import java.util.Date;
 
 @Data

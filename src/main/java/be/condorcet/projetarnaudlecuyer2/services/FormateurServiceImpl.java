@@ -1,8 +1,8 @@
-package be.condorcet.monprojet2.services;
+package be.condorcet.projetarnaudlecuyer2.services;
 
-import be.condorcet.monprojet2.entities.Formateur;
-import be.condorcet.monprojet2.repositories.FormateurRepository;
-import be.condorcet.monprojet2.repositories.SessionCoursRepository;
+import be.condorcet.projetarnaudlecuyer2.entities.Formateur;
+import be.condorcet.projetarnaudlecuyer2.repositories.FormateurRepository;
+import be.condorcet.projetarnaudlecuyer2.repositories.SessionCoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;

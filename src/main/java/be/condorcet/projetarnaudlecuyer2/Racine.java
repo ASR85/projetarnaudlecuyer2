@@ -1,4 +1,4 @@
-package be.condorcet.monprojet2;
+package be.condorcet.projetarnaudlecuyer2;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

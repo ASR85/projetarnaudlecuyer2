@@ -1,1 +1,1 @@
-web: java -jar target/monprojet2-0.0.1-SNAPSHOT.jar
+web: java -jar target/projetarnaudlecuyer2-0.0.1-SNAPSHOT.jar

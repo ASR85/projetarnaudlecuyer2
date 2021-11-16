@@ -1,7 +1,6 @@
-package be.condorcet.monprojet2.services;
+package be.condorcet.projetarnaudlecuyer2.services;
 
-import be.condorcet.monprojet2.entities.Formateur;
-import be.condorcet.monprojet2.entities.SessionCours;
+import be.condorcet.projetarnaudlecuyer2.entities.Formateur;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

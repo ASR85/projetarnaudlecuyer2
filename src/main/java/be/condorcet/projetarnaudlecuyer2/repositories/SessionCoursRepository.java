@@ -1,7 +1,6 @@
-package be.condorcet.monprojet2.repositories;
+package be.condorcet.projetarnaudlecuyer2.repositories;
 
-import be.condorcet.monprojet2.entities.Formateur;
-import be.condorcet.monprojet2.entities.SessionCours;
+import be.condorcet.projetarnaudlecuyer2.entities.SessionCours;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

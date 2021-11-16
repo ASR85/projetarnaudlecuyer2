@@ -1,4 +1,4 @@
-package be.condorcet.monprojet2.services;
+package be.condorcet.projetarnaudlecuyer2.services;
 
 public interface InterfService<T> {
 

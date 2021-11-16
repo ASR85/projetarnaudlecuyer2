@@ -1,6 +1,6 @@
-package be.condorcet.monprojet2.services;
+package be.condorcet.projetarnaudlecuyer2.services;
 
-import be.condorcet.monprojet2.entities.SessionCours;
+import be.condorcet.projetarnaudlecuyer2.entities.SessionCours;
 
 import java.sql.Date;
 
