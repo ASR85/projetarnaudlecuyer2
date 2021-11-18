@@ -14,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class FormateurServiceImplTest {
 
     @Autowired
-    private FormateurServiceImpl formateurServiceImpl;
+    private InterfFormateurService formateurServiceImpl;
 
-    @Autowired
-            private SessionCoursServiceImpl sessionCoursServiceImpl;
+    /*@Autowired
+    private InterfSessioncoursService sessionCoursServiceImpl;*/
 
     Formateur fo;
 

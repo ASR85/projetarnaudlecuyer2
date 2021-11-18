@@ -18,8 +18,6 @@ public class Monprojet2Application implements CommandLineRunner {
         SpringApplication.run(Monprojet2Application.class, args);
     }
 
-
-
     @Override
     public void run(String... args) throws Exception {
 
