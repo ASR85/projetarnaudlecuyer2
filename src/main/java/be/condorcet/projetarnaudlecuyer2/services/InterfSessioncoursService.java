@@ -6,5 +6,5 @@ import java.sql.Date;
 
 public interface InterfSessioncoursService extends InterfService<SessionCours>{
 
-    public SessionCours read (Date dateDebut, Date dateFin, int nbreinscrits);
+    public SessionCours read (int nbreinscrits);
 }

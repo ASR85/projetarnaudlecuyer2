@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-//@Service
+@Service
 @Transactional(rollbackOn = Exception.class)
 public class FormateurServiceImpl implements InterfFormateurService{
 
