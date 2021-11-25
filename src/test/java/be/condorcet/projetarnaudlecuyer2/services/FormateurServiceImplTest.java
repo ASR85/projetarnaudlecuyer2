@@ -58,7 +58,7 @@ class FormateurServiceImplTest {
         try{
             int numfo=fo.getId();
             Formateur fo2=formateurServiceImpl.read(numfo);
-            assertEquals(",NomTest",fo2.getNom(),"noms différents "+"NomTest"+"-"+fo2.getNom());
+            assertEquals("NomTest",fo2.getNom(),"noms différents "+"NomTest"+"-"+fo2.getNom());
             assertEquals("PrenomTest",fo2.getPrenom(),"prénoms différents"+"NomTest"+"-"+fo2.getPrenom());
             //etc
         }
@@ -66,7 +66,7 @@ class FormateurServiceImplTest {
             fail("Recherche Infructueuse "+e);
         }
     }
-/*
+   /*
     @Test
     void testRead() {
     }*/
