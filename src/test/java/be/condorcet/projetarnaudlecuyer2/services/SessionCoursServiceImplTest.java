@@ -103,32 +103,32 @@ class SessionCoursServiceImplTest {
     }
 
     @Test
-    void delete() {/*
+    void delete() {
         try{
-            comfactServiceImpl.delete(cf);
+            sessionCoursServiceImpl.delete(sc);
             Assertions.assertThrows(Exception.class, () -> {
-                comfactServiceImpl.read(cf.getNumcommande());
+                sessionCoursServiceImpl.read(sc.getId());
             },"record non effacé");
         }
         catch(Exception e){
             fail("erreur d'effacement "+e);
-        }*/
+        }
     }
     @Test
-    void affCollection(){ /*
+    void affSessionCours(){
         try {
-            Collection<Comfact> lco = comfactServiceImpl.getComfacts(cl);
+            Collection<SessionCours> csc = sessionCoursServiceImpl.getSessionCours(fo);
             boolean trouve = false;
-            for(Comfact c:lco){
-                if(c.getNumcommande()==cf.getNumcommande()){
+            for(SessionCours c:csc){
+                if(c.getId()==sc.getId()){
                     trouve=true;
                     break;
                 }
             }
-            assertTrue(trouve,"commande absente de la liste du client");
+            assertTrue(trouve,"Session de cours absente de la liste des formateurs");
         }
         catch(Exception e){
             fail("Erreur de recherche "+e);
-        }*/
+        }
     }
 }

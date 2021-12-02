@@ -1,5 +1,6 @@
 package be.condorcet.projetarnaudlecuyer2.services;
 
+        import be.condorcet.projetarnaudlecuyer2.entities.Formateur;
         import be.condorcet.projetarnaudlecuyer2.entities.SessionCours;
         import be.condorcet.projetarnaudlecuyer2.repositories.FormateurRepository;
         import be.condorcet.projetarnaudlecuyer2.repositories.SessionCoursRepository;
@@ -9,6 +10,7 @@ package be.condorcet.projetarnaudlecuyer2.services;
 
         import javax.transaction.Transactional;
         import java.sql.Date;
+        import java.util.List;
 
 @Component
 @Service
@@ -29,12 +31,12 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
 
     @Override
     public SessionCours read(Integer id) throws Exception {
-        return null;
+        return sessionCoursRepository.findById(id).get();
     }
-
+/*
     public SessionCours read(int nbreinscrits) {
         return sessionCoursRepository.findBynbreinscrits(nbreinscrits).stream().findFirst().get();
-    }
+    }*/
 
 
     @Override
@@ -44,7 +46,6 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
         oldCl.setDateDebut(sessionCours.getDateDebut());
         oldCl.setDateFin(sessionCours.getDateFin());
         oldCl.setNbreinscrits(sessionCours.getNbreinscrits());
-
         sessionCoursRepository.save(oldCl);
         return read(oldCl.getId());
     }
@@ -53,6 +54,16 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
         sessionCoursRepository.deleteById(sessionCours.getId());
     }
 
+    @Override
+    public SessionCours read(int nbreinscrits) {
+        return null;
+    }
+
+    @Override
+    public List<SessionCours> getSessionCours(Formateur fo) {
+        List<SessionCours> lsc = sessionCoursRepository.findSessionCoursByFormateur(fo);
+        return lsc;
+    }
 }
 
 

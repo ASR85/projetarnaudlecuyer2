@@ -16,8 +16,8 @@ class FormateurServiceImplTest {
     @Autowired
     private InterfFormateurService formateurServiceImpl;
 
-    /*@Autowired
-    private InterfSessioncoursService sessionCoursServiceImpl;*/
+    @Autowired
+    private InterfSessioncoursService sessionCoursServiceImpl;
 
     Formateur fo;
 
