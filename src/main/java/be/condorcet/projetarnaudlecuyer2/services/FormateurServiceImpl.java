@@ -41,7 +41,7 @@ public class FormateurServiceImpl implements InterfFormateurService{
 
     @Override
     public Formateur read(String nom, String prenom, String mail) {
-        return null;
+        return formateurRepository.findByNomLikeAndPrenomLikeAndMailLike(nom, prenom, mail).stream().findFirst().get();
     }
 
 
@@ -52,7 +52,6 @@ public class FormateurServiceImpl implements InterfFormateurService{
         oldCl.setNom(formateur.getNom());
         oldCl.setPrenom(formateur.getPrenom());
         oldCl.setMail(formateur.getMail());
-
         formateurRepository.save(oldCl);
         return read(oldCl.getId());
     }
@@ -61,6 +60,12 @@ public class FormateurServiceImpl implements InterfFormateurService{
     public void delete(Formateur formateur) throws Exception {
         formateurRepository.deleteById(formateur.getId());
     }
+
+    @Override
+    public List<Formateur> read_mail(String mail) {
+        return formateurRepository.findByMail(mail);
+    }
+
 
 }
 

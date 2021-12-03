@@ -8,5 +8,5 @@ public interface InterfFormateurService extends InterfService<Formateur>{
 
     public List<Formateur> read(String nom);
     public Formateur read(String nom, String prenom, String mail);
-
+    public List<Formateur> read_mail(String mail);
 }

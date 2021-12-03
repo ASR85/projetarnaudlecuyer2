@@ -1,12 +1,17 @@
 package be.condorcet.projetarnaudlecuyer2.services;
 
 import be.condorcet.projetarnaudlecuyer2.entities.Formateur;
+import be.condorcet.projetarnaudlecuyer2.entities.SessionCours;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,10 +53,16 @@ class FormateurServiceImplTest {
 
     @Test
     void create() {
-       // assertNotEquals(0,fo.getId(),"id formateur non incrémenté!");
+       assertNotEquals(0,fo.getId(),"id formateur non incrémenté!");
     }
 
-
+    @Test
+    void creationDoublon(){
+        Formateur fo2 = new Formateur(null, "nomtest.prenomtest@gmail.be", "NomTest","PrenomTest",null);
+        Assertions.assertThrows(Exception.class, () -> {
+            formateurServiceImpl.create(fo2);
+        },"Création d'un doublon");
+    }
     @Test
     void read() {
 
@@ -66,10 +77,6 @@ class FormateurServiceImplTest {
             fail("Recherche Infructueuse "+e);
         }
     }
-   /*
-    @Test
-    void testRead() {
-    }*/
 
     @Test
     void update() {
@@ -101,6 +108,31 @@ class FormateurServiceImplTest {
         catch(Exception e){
             fail("Erreur d'effacement "+e);
         }
+    }
+
+    @Test
+    void delAvecSessionCours(){
+        try{
+            SessionCours sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()),50,fo);
+            sessionCoursServiceImpl.create(sc);
+            Assertions.assertThrows(Exception.class, () -> {
+                formateurServiceImpl.delete(fo);
+            },"Effacement réalisé malgrès la session de cours liée...");
+            sessionCoursServiceImpl.delete(sc);
+        }catch (Exception e){
+            fail("Erreur de création de la session de cours"+ e);
+        }
+    }
+
+    @Test
+    void rechNom() {
+        List<Formateur> lf = formateurServiceImpl.read("NomTest");
+        boolean trouve=false;
+        for(Formateur f : lf){
+            if(f.getNom().equals("NomTest")) trouve=true;
+            else fail("Un record ne correspond pas , nom = "+f.getNom());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
     }
 
 }

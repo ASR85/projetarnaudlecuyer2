@@ -37,7 +37,7 @@ class SessionCoursServiceImplTest {
             fo = new Formateur(null, "nomtest2.prenomtest2@gmail.be", "Walem","Hugo",null);
             formateurServiceImpl.create(fo);
             System.out.println("Création du formateur: "+fo);
-            sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf("2020-07-20"), 20, null);
+            sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf("2020-07-20"), 20, fo);
             sessionCoursServiceImpl.create(sc);
             System.out.println("Création de la session de cours! : "+fo);
         }
@@ -64,56 +64,50 @@ class SessionCoursServiceImplTest {
 
     @Test
     void create() {
-        assertNotEquals(0,sc.getId(),"Numéro de seesion de cours non incrémenté!");
+        assertNotEquals(0,sc.getId(),"Numéro de session de cours non incrémenté!");
     }
 
     @Test
-    void read() {/*
+    void read() {
         try{
-            int numsc.getId();
+            int numsc = sc.getId();
             SessionCours sc2=sessionCoursServiceImpl.read(numsc);
-            assertEquals(sc2.getMontant(),new
-                    BigDecimal(1000).setScale(2, RoundingMode.HALF_UP),"montants différents "+co2.getMontant()+"-"+new BigDecimal(1000));
-            //etc
+            assertEquals(sc2.getDateDebut(), Date.valueOf(LocalDate.parse("2020-12-1")));
+            assertEquals(sc2.getDateFin(), Date.valueOf(LocalDate.parse("2020-12-31")));
+            assertEquals(sc2.getNbreinscrits(), new Integer (25));
         }
         catch (Exception e){
             fail("recherche infructueuse "+e);
-        }*/
+        }
     }
-/*
-    @Test
-    void testRead() {
-    }*/
 
     @Test
-    void update() {/*
-        cf.setMontant(new BigDecimal(50.25).setScale(2,
-                RoundingMode.HALF_UP));
-        //etc
+    void update() {
+        sc.setNbreinscrits(40);
+
         try{
-            cf= comfactServiceImpl.update(cf);
-            assertEquals(cf.getMontant(),new BigDecimal(50.25).setScale(2,
-                    RoundingMode.HALF_UP),"montants différents "+cf.getMontant()+"-"+new
-                    BigDecimal(50.25));
-            //etc
+            sc= sessionCoursServiceImpl.update(sc);
+            assertEquals(sc.getNbreinscrits(),new Integer(40),"Nombre d'inscrits différent! "+sc.getNbreinscrits()+"-"+new Integer(40));
         }
         catch(Exception e){
             fail("erreur de mise à jour "+e);
-        }*/
+        }
     }
 
-    @Test
-    void delete() {
-        try{
-            sessionCoursServiceImpl.delete(sc);
-            Assertions.assertThrows(Exception.class, () -> {
-                sessionCoursServiceImpl.read(sc.getId());
-            },"record non effacé");
+
+        @Test
+        void delete() {
+            try {
+                sessionCoursServiceImpl.delete(sc);
+                Assertions.assertThrows(Exception.class, () -> {
+                    sessionCoursServiceImpl.read(sc.getId());
+                }, "record non effacé");
+            } catch (Exception e) {
+                fail("erreur d'effacement " + e);
+            }
         }
-        catch(Exception e){
-            fail("erreur d'effacement "+e);
-        }
-    }
+
+
     @Test
     void affSessionCours(){
         try {
