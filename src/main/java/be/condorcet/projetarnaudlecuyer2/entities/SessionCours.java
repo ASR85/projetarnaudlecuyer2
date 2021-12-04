@@ -20,8 +20,8 @@ public class SessionCours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date dateDebut;
-    private Date dateFin;
+    private Date datedebut;
+    private Date datefin;
     private Integer nbreinscrits;
     @ManyToOne
     @JoinColumn(name="fk_idformateur")

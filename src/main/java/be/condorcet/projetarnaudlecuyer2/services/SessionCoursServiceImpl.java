@@ -33,18 +33,18 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
     public SessionCours read(Integer id) throws Exception {
         return sessionCoursRepository.findById(id).get();
     }
-/*
+
     public SessionCours read(int nbreinscrits) {
         return sessionCoursRepository.findBynbreinscrits(nbreinscrits).stream().findFirst().get();
-    }*/
+    }
 
 
     @Override
     public SessionCours update(SessionCours sessionCours) throws Exception{
         Integer id = sessionCours.getId();
         SessionCours oldCl= read(id);
-        oldCl.setDateDebut(sessionCours.getDateDebut());
-        oldCl.setDateFin(sessionCours.getDateFin());
+        oldCl.setDatedebut(sessionCours.getDatedebut());
+        oldCl.setDatefin(sessionCours.getDatefin());
         oldCl.setNbreinscrits(sessionCours.getNbreinscrits());
         sessionCoursRepository.save(oldCl);
         return read(oldCl.getId());
@@ -52,11 +52,6 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
     @Override
     public void delete(SessionCours sessionCours) throws Exception {
         sessionCoursRepository.deleteById(sessionCours.getId());
-    }
-
-    @Override
-    public SessionCours read(int nbreinscrits) {
-        return null;
     }
 
     @Override

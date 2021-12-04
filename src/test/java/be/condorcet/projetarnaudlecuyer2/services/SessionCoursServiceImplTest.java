@@ -37,7 +37,7 @@ class SessionCoursServiceImplTest {
             fo = new Formateur(null, "nomtest2.prenomtest2@gmail.be", "Walem","Hugo",null);
             formateurServiceImpl.create(fo);
             System.out.println("Création du formateur: "+fo);
-            sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf("2020-07-20"), 20, fo);
+            sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 20, fo);
             sessionCoursServiceImpl.create(sc);
             System.out.println("Création de la session de cours! : "+fo);
         }
@@ -72,9 +72,10 @@ class SessionCoursServiceImplTest {
         try{
             int numsc = sc.getId();
             SessionCours sc2=sessionCoursServiceImpl.read(numsc);
-            assertEquals(sc2.getDateDebut(), Date.valueOf(LocalDate.parse("2020-12-1")));
-            assertEquals(sc2.getDateFin(), Date.valueOf(LocalDate.parse("2020-12-31")));
+            assertEquals(sc2.getDatedebut(), Date.valueOf(LocalDate.now()));
+            assertEquals(sc2.getDatefin(),   Date.valueOf(LocalDate.now()));
             assertEquals(sc2.getNbreinscrits(), new Integer (25));
+            assertEquals(sc2.getFormateur(), null);
         }
         catch (Exception e){
             fail("recherche infructueuse "+e);
@@ -83,11 +84,11 @@ class SessionCoursServiceImplTest {
 
     @Test
     void update() {
-        sc.setNbreinscrits(40);
+        sc.setNbreinscrits(new Integer (40));
 
         try{
             sc= sessionCoursServiceImpl.update(sc);
-            assertEquals(sc.getNbreinscrits(),new Integer(40),"Nombre d'inscrits différent! "+sc.getNbreinscrits()+"-"+new Integer(40));
+            assertEquals(sc.getNbreinscrits(),new Integer(40),"Nombre d'inscrits différent! ");
         }
         catch(Exception e){
             fail("erreur de mise à jour "+e);

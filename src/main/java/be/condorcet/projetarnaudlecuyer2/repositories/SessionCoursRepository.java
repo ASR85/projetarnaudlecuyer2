@@ -11,9 +11,9 @@ import java.util.List;
 @Repository
 public interface SessionCoursRepository extends JpaRepository<SessionCours,Integer> {
 
-    public List<SessionCours> findByDateDebutLikeAndDateFinLikeAndNbreinscritsLike(Date dateDebut, Date dateFin, int nbreinscrits);
-    public List<SessionCours> findByDateDebutLike(Date dateDebut);
-    public List<SessionCours> findByDateFinLike(Date dateFin);
+    public List<SessionCours> findByDatedebutLikeAndDatefinLikeAndNbreinscritsLike(Date datedebut, Date datefin, int nbreinscrits);
+    public List<SessionCours> findByDatedebutLike(Date datedebut);
+    public List<SessionCours> findByDatefinLike(Date datefin);
     public List<SessionCours> findBynbreinscrits(int nbreinscrits);
     public List<SessionCours> findSessionCoursByFormateur(Formateur fo);
 

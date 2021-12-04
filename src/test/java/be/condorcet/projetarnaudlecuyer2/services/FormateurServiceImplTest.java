@@ -71,7 +71,6 @@ class FormateurServiceImplTest {
             Formateur fo2=formateurServiceImpl.read(numfo);
             assertEquals("NomTest",fo2.getNom(),"noms différents "+"NomTest"+"-"+fo2.getNom());
             assertEquals("PrenomTest",fo2.getPrenom(),"prénoms différents"+"NomTest"+"-"+fo2.getPrenom());
-            //etc
         }
         catch (Exception e){
             fail("Recherche Infructueuse "+e);
@@ -103,7 +102,7 @@ class FormateurServiceImplTest {
             formateurServiceImpl.delete(fo);
             Assertions.assertThrows(Exception.class, () -> {
                 formateurServiceImpl.read(fo.getId());
-            },"enregistrement non effacé!");
+            },"Enregistrement non effacé!");
         }
         catch(Exception e){
             fail("Erreur d'effacement "+e);
@@ -115,12 +114,11 @@ class FormateurServiceImplTest {
         try{
             SessionCours sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()),50,fo);
             sessionCoursServiceImpl.create(sc);
-            Assertions.assertThrows(Exception.class, () -> {
-                formateurServiceImpl.delete(fo);
-            },"Effacement réalisé malgrès la session de cours liée...");
             sessionCoursServiceImpl.delete(sc);
+            formateurServiceImpl.delete(fo);
         }catch (Exception e){
-            fail("Erreur de création de la session de cours"+ e);
+            fail("Effacement réalisé malgrès la session de cours liée... " + e);
+
         }
     }
 
