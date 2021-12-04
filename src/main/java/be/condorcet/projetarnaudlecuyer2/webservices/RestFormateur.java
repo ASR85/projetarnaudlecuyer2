@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/clients")
+@RequestMapping("/formateurs")
 
 public class RestFormateur {
     @Autowired
