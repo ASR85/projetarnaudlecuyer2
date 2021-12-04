@@ -34,7 +34,7 @@ class SessionCoursServiceImplTest {
     @BeforeEach
     void setUp() {
         try{
-            fo = new Formateur(null, "nomtest2.prenomtest2@gmail.be", "Walem","Hugo",null);
+            fo = new Formateur(null, "hw@gmail.be", "Walem","Hugo",null);
             formateurServiceImpl.create(fo);
             System.out.println("Création du formateur: "+fo);
             sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 20, fo);
@@ -72,10 +72,9 @@ class SessionCoursServiceImplTest {
         try{
             int numsc = sc.getId();
             SessionCours sc2=sessionCoursServiceImpl.read(numsc);
-            assertEquals(sc2.getDatedebut(), Date.valueOf(LocalDate.now()));
-            assertEquals(sc2.getDatefin(),   Date.valueOf(LocalDate.now()));
-            assertEquals(sc2.getNbreinscrits(), new Integer (25));
-            assertEquals(sc2.getFormateur(), null);
+            assertEquals(Date.valueOf(LocalDate.now()),sc2.getDatedebut(),"date différente " +Date.valueOf(LocalDate.now())+sc2.getDatedebut());
+            assertEquals(Date.valueOf(LocalDate.now()),sc2.getDatefin(),"date différente " +Date.valueOf(LocalDate.now())+sc2.getDatefin());
+            assertEquals(sc2.getNbreinscrits(), new Integer (20));
         }
         catch (Exception e){
             fail("recherche infructueuse "+e);

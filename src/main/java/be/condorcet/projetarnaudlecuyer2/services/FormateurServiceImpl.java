@@ -39,11 +39,6 @@ public class FormateurServiceImpl implements InterfFormateurService{
         return formateurRepository.findByNomLike(nom);
     }
 
-    @Override
-    public Formateur read(String nom, String prenom, String mail) {
-        return formateurRepository.findByNomLikeAndPrenomLikeAndMailLike(nom, prenom, mail).stream().findFirst().get();
-    }
-
 
     @Override
     public Formateur update(Formateur formateur) throws Exception{
@@ -64,6 +59,11 @@ public class FormateurServiceImpl implements InterfFormateurService{
     @Override
     public List<Formateur> read_mail(String mail) {
         return formateurRepository.findByMail(mail);
+    }
+
+    @Override
+    public List<Formateur> read_prenom(String prenom) {
+        return formateurRepository.findByPrenomLike(prenom);
     }
 
 

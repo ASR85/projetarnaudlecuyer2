@@ -133,4 +133,27 @@ class FormateurServiceImplTest {
         assertTrue(trouve,"Record non trouvé dans la liste");
     }
 
+    @Test
+    void rechPrenom() {
+        List<Formateur> lf = formateurServiceImpl.read_prenom("PrenomTest");
+        boolean trouve=false;
+        for(Formateur f : lf){
+            if(f.getPrenom().equals("PrenomTest")) trouve=true;
+            else fail("Un record ne correspond pas , Prenom = "+f.getPrenom());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
+    }
+
+    @Test
+    void rechMail(){
+        List<Formateur> lf = formateurServiceImpl.read_mail("nomtest.prenomtest@gmail.be");
+        boolean trouve=false;
+        for(Formateur f : lf){
+            if(f.getMail().equals("nomtest.prenomtest@gmail.be")) trouve=true;
+            else fail("Un record ne correspond pas , Mail = "+f.getMail());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
+    }
+
+
 }

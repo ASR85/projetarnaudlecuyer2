@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface InterfSessioncoursService extends InterfService<SessionCours>{
 
-    public SessionCours read (int nbreinscrits);
+    public SessionCours read (int id);
     public List<SessionCours> getSessionCours(Formateur fo);
 }

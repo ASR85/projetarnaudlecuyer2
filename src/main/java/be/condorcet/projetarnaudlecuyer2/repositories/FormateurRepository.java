@@ -10,8 +10,7 @@ import java.util.List;
 @Repository
 public interface FormateurRepository extends JpaRepository<Formateur,Integer> {
 
-public List<Formateur> findByNomLikeAndPrenomLikeAndMailLike(String nom, String prenom, String mail);
-public List<Formateur> findByNomLike(String nom);
-public List<Formateur> findByPrenomLike(String prenom);
-public List<Formateur> findByMail(String mail);
+    public List<Formateur> findByNomLike(String nom);
+    public List<Formateur> findByPrenomLike(String prenom);
+    public List<Formateur> findByMail(String mail);
 }

@@ -15,6 +15,7 @@ package be.condorcet.projetarnaudlecuyer2.services;
 @Component
 @Service
 @Transactional(rollbackOn = Exception.class)
+
 public class SessionCoursServiceImpl implements InterfSessioncoursService{
 
     @Autowired
@@ -34,8 +35,9 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
         return sessionCoursRepository.findById(id).get();
     }
 
-    public SessionCours read(int nbreinscrits) {
-        return sessionCoursRepository.findBynbreinscrits(nbreinscrits).stream().findFirst().get();
+    @Override
+    public SessionCours read(int id)  {
+        return sessionCoursRepository.findById(id).get();
     }
 
 
