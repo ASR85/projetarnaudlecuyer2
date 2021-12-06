@@ -35,8 +35,8 @@ public class FormateurServiceImpl implements InterfFormateurService{
     }
 
     @Override
-    public List<Formateur> readNPM(String nom, String prenom, String mail) {
-        return formateurRepository.findByNomLikeAndPrenomLikeAndMailLike(nom, prenom, mail);
+    public Formateur readNPM(String nom, String prenom, String mail) {
+        return formateurRepository.findByNomLikeAndPrenomLikeAndMailLike(nom, prenom, mail).stream().findFirst().get();
     }
 
     @Override

@@ -23,7 +23,7 @@ public class RestFormateur {
     //-------------------Retrouver le formateur correspondant à un id donné--------------------------------------------
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Formateur> getFormateur(@PathVariable(value = "id") int id) throws Exception {
-        System.out.println("recherche du client d' id " + id);
+        System.out.println("recherche du formateur d' id " + id);
         Formateur formateur = formateurServiceImpl.read(id);
         return new ResponseEntity<>(formateur, HttpStatus.OK);
     }
@@ -36,6 +36,15 @@ public class RestFormateur {
         formateurs = formateurServiceImpl.read(nom);
         return new ResponseEntity<>(formateurs, HttpStatus.OK);
     }
+
+    //-------------------Retrouver le client correspondant à  un triplet (nom,prenom,mail) unique donné-----------------
+    @RequestMapping(value = "/{nom}/{prenom}/{mail}", method = RequestMethod.GET)
+    public ResponseEntity<Formateur> getFormateurUnique(@PathVariable(value = "nom") String nom, @PathVariable(value = "prenom") String prenom,@PathVariable(value = "mail") String mail)  throws Exception{
+        System.out.println("recherche du formateur "+nom+" "+prenom+" "+mail);
+        Formateur fo = formateurServiceImpl.readNPM(nom, prenom, mail);
+        return new ResponseEntity<>(fo, HttpStatus.OK);
+    }
+
 
     //-------------------Retrouver le client correspondant à un mail donné------------------------------
     @RequestMapping(value = "/mail={mail}", method = RequestMethod.GET)

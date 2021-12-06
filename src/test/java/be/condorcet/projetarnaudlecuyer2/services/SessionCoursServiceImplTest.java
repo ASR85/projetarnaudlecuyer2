@@ -133,7 +133,7 @@ class SessionCoursServiceImplTest {
         boolean trouve=false;
         for(SessionCours sc : lsc){
             if(sc.getDatedebut().equals(Date.valueOf(LocalDate.now()))) trouve=true;
-            else fail("Un record ne correspond pas , nom = "+sc.getDatedebut());
+            else fail("Un record ne correspond pas , Date de début = "+sc.getDatedebut());
         }
         assertTrue(trouve,"Record non trouvé dans la liste");
     }
@@ -144,7 +144,7 @@ class SessionCoursServiceImplTest {
         boolean trouve=false;
         for(SessionCours sc : lsc){
             if(sc.getDatefin().equals(Date.valueOf(LocalDate.now()))) trouve=true;
-            else fail("Un record ne correspond pas , nom = "+sc.getDatefin());
+            else fail("Un record ne correspond pas , Date de fin = "+sc.getDatefin());
         }
         assertTrue(trouve,"Record non trouvé dans la liste");
     }
@@ -154,8 +154,8 @@ class SessionCoursServiceImplTest {
         List<SessionCours> lsc = sessionCoursServiceImpl.read_nbrInscrits(20);
         boolean trouve=false;
         for(SessionCours sc : lsc){
-            if(sc.getNbreinscrits().equals(20)) trouve=true;
-            else fail("Un record ne correspond pas , nom = "+sc.getNbreinscrits());
+            if(sc.getNbreinscrits()==20) trouve=true;
+            else fail("Un record ne correspond pas , Nombre d'inscrits = "+sc.getNbreinscrits());
         }
         assertTrue(trouve,"Record non trouvé dans la liste");
     }
