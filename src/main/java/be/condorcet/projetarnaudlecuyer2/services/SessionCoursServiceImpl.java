@@ -61,6 +61,22 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
         List<SessionCours> lsc = sessionCoursRepository.findSessionCoursByFormateur(fo);
         return lsc;
     }
+
+    @Override
+    public List<SessionCours> read_dateDebut(Date datedebut){
+        return sessionCoursRepository.findByDatedebutLike(datedebut);
+    }
+
+    @Override
+    public List<SessionCours> read_dateFin(Date datefin){
+        return sessionCoursRepository.findByDatefinLike(datefin);
+    }
+
+    @Override
+    public List<SessionCours> read_nbrInscrits(int nbreinscrits)  {
+        return sessionCoursRepository.findBynbreinscrits(nbreinscrits);
+    }
+
 }
 
 

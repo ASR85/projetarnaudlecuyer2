@@ -35,6 +35,11 @@ public class FormateurServiceImpl implements InterfFormateurService{
     }
 
     @Override
+    public List<Formateur> readNPM(String nom, String prenom, String mail) {
+        return formateurRepository.findByNomLikeAndPrenomLikeAndMailLike(nom, prenom, mail);
+    }
+
+    @Override
     public List<Formateur>read(String nom) {
         return formateurRepository.findByNomLike(nom);
     }
@@ -65,7 +70,6 @@ public class FormateurServiceImpl implements InterfFormateurService{
     public List<Formateur> read_prenom(String prenom) {
         return formateurRepository.findByPrenomLike(prenom);
     }
-
 
 }
 

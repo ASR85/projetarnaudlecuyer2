@@ -15,6 +15,7 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -124,5 +125,38 @@ class SessionCoursServiceImplTest {
         catch(Exception e){
             fail("Erreur de recherche "+e);
         }
+    }
+
+    @Test
+    void rechDateDebut() {
+        List<SessionCours> lsc = sessionCoursServiceImpl.read_dateDebut(Date.valueOf(LocalDate.now()));
+        boolean trouve=false;
+        for(SessionCours sc : lsc){
+            if(sc.getDatedebut().equals(Date.valueOf(LocalDate.now()))) trouve=true;
+            else fail("Un record ne correspond pas , nom = "+sc.getDatedebut());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
+    }
+
+    @Test
+    void rechDateFin() {
+        List<SessionCours> lsc = sessionCoursServiceImpl.read_dateFin(Date.valueOf(LocalDate.now()));
+        boolean trouve=false;
+        for(SessionCours sc : lsc){
+            if(sc.getDatefin().equals(Date.valueOf(LocalDate.now()))) trouve=true;
+            else fail("Un record ne correspond pas , nom = "+sc.getDatefin());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
+    }
+
+    @Test
+    void rechNbreInscrits() {
+        List<SessionCours> lsc = sessionCoursServiceImpl.read_nbrInscrits(20);
+        boolean trouve=false;
+        for(SessionCours sc : lsc){
+            if(sc.getNbreinscrits().equals(20)) trouve=true;
+            else fail("Un record ne correspond pas , nom = "+sc.getNbreinscrits());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
     }
 }

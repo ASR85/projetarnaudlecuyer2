@@ -10,4 +10,7 @@ public interface InterfSessioncoursService extends InterfService<SessionCours>{
 
     public SessionCours read (int id);
     public List<SessionCours> getSessionCours(Formateur fo);
+    List<SessionCours> read_dateDebut(Date datedebut);
+    List<SessionCours> read_dateFin(Date datefin);
+    public List<SessionCours> read_nbrInscrits (int nbreinscrits);
 }
