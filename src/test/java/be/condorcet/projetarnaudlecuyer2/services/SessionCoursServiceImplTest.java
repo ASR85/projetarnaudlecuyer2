@@ -38,9 +38,10 @@ class SessionCoursServiceImplTest {
             fo = new Formateur(null, "hw@gmail.be", "Walem","Hugo",null);
             formateurServiceImpl.create(fo);
             System.out.println("Création du formateur: "+fo);
+
             sc = new SessionCours(null, Date.valueOf(LocalDate.now()), Date.valueOf(LocalDate.now()), 20, fo);
             sessionCoursServiceImpl.create(sc);
-            System.out.println("Création de la session de cours! : "+fo);
+            System.out.println("Création de la session de cours! : "+sc);
         }
         catch (Exception e){
             System.out.println("Erreur de la création de la session de cours! "+e);
@@ -83,6 +84,17 @@ class SessionCoursServiceImplTest {
     }
 
     @Test
+    void rechNbreInscrits() {
+        List<SessionCours> lsc = sessionCoursServiceImpl.read_nbrInscrits(20);
+        boolean trouve=false;
+        for(SessionCours sc : lsc){
+            if(sc.getNbreinscrits()==20) trouve=true;
+            else fail("Un record ne correspond pas , Nombre d'inscrits = "+sc.getNbreinscrits());
+        }
+        assertTrue(trouve,"Record non trouvé dans la liste");
+    }
+
+    @Test
     void update() {
         sc.setNbreinscrits(new Integer (40));
 
@@ -114,8 +126,8 @@ class SessionCoursServiceImplTest {
         try {
             Collection<SessionCours> csc = sessionCoursServiceImpl.getSessionCours(fo);
             boolean trouve = false;
-            for(SessionCours c:csc){
-                if(c.getId()==sc.getId()){
+            for(SessionCours sc:csc){
+                if(sc.getId()==sc.getId()){
                     trouve=true;
                     break;
                 }
@@ -127,36 +139,5 @@ class SessionCoursServiceImplTest {
         }
     }
 
-    @Test
-    void rechDateDebut() {
-        List<SessionCours> lsc = sessionCoursServiceImpl.read_dateDebut(Date.valueOf(LocalDate.now()));
-        boolean trouve=false;
-        for(SessionCours sc : lsc){
-            if(sc.getDatedebut().equals(Date.valueOf(LocalDate.now()))) trouve=true;
-            else fail("Un record ne correspond pas , Date de début = "+sc.getDatedebut());
-        }
-        assertTrue(trouve,"Record non trouvé dans la liste");
-    }
 
-    @Test
-    void rechDateFin() {
-        List<SessionCours> lsc = sessionCoursServiceImpl.read_dateFin(Date.valueOf(LocalDate.now()));
-        boolean trouve=false;
-        for(SessionCours sc : lsc){
-            if(sc.getDatefin().equals(Date.valueOf(LocalDate.now()))) trouve=true;
-            else fail("Un record ne correspond pas , Date de fin = "+sc.getDatefin());
-        }
-        assertTrue(trouve,"Record non trouvé dans la liste");
-    }
-
-    @Test
-    void rechNbreInscrits() {
-        List<SessionCours> lsc = sessionCoursServiceImpl.read_nbrInscrits(20);
-        boolean trouve=false;
-        for(SessionCours sc : lsc){
-            if(sc.getNbreinscrits()==20) trouve=true;
-            else fail("Un record ne correspond pas , Nombre d'inscrits = "+sc.getNbreinscrits());
-        }
-        assertTrue(trouve,"Record non trouvé dans la liste");
-    }
 }

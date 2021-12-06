@@ -9,7 +9,7 @@ package be.condorcet.projetarnaudlecuyer2.services;
         import org.springframework.stereotype.Service;
 
         import javax.transaction.Transactional;
-        import java.sql.Date;
+        import java.util.Date;
         import java.util.List;
 
 @Component
@@ -33,6 +33,12 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
     @Override
     public SessionCours read(Integer id) throws Exception {
         return sessionCoursRepository.findById(id).get();
+    }
+
+
+    @Override
+    public SessionCours readDDDFI(Date datedebut, Date datefin, int nbrinscrits) {
+        return sessionCoursRepository.findByDatedebutLikeAndDatefinLikeAndNbreinscritsLike(datedebut, datefin, nbrinscrits).stream().findFirst().get();
     }
 
     @Override
@@ -62,15 +68,6 @@ public class SessionCoursServiceImpl implements InterfSessioncoursService{
         return lsc;
     }
 
-    @Override
-    public List<SessionCours> read_dateDebut(Date datedebut){
-        return sessionCoursRepository.findByDatedebutLike(datedebut);
-    }
-
-    @Override
-    public List<SessionCours> read_dateFin(Date datefin){
-        return sessionCoursRepository.findByDatefinLike(datefin);
-    }
 
     @Override
     public List<SessionCours> read_nbrInscrits(int nbreinscrits)  {
